@@ -107,3 +107,13 @@ VALUES (5, 'Ahmet', 'BATMAN', '05453', '1234567890', '5132123', '1', '12345');
 tetiklenecek ve mesajlar tablosuna  (Hoşgeldiniz isim soyisim şeklinde bir kayıt girecektir)
 
 --------------------------------------------------------------------------------------
+
+Pythondan sql servera bağlanıp stored procedür ve trigger yapılarının kullanım mantığında:
+sql server bağlantı parametreleri belirttikten sonra bağlantı dize ayarları oluşturulur.
+tanımlanan değişkenler ile sql servera bağlantı sağlandıktan sonra stored_precedüre adı altında
+stored procedüre çağırmak için değişkene  bilgiler girilir "  stored_procedure = "{CALL sp_adi (?, ?)}"
+stored procedüre parametrelerini de değişkenlere atadıktan sonra "cursor.execute(stored_procedure, (param1, param2))"
+cursor.execute(stored_procedure, (param1, param2)) çağrılır.
+ Yine trigger'ı çağırmak için trigger_command = f"EXEC sp_settriggerorder @triggername = '{trigger_name}', @order = 'first',
+ @stmttype = 'insert', @namespace = 'database', @table_name = '{table_name}'"  gibi bir kod satırı yazıldıktan sonra 
+cursor.execute(trigger_command) diyerek bağlantı atadığımız "trigger_commandı" çağırıp trigger'ı tetikleyebiliriz.
